@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html class="home">
+    <head>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <title>Hello World</title>
+		<link rel='stylesheet' type="text/css" href="css/icons/material-icons.css">
+		<link rel='stylesheet' type="text/css" href="css/renz.css">
+    </head>
+    <body class='home'>
+		
+		<div class="navbar-fixed">
+			<nav>
+				<div class="nav-wrapper">
+					<a href="index.html" class="brand-logo left" style="margin-left:7px"><i class="material-icons">arrow_back</i></a>
+				</div>
+			</nav>
+		</div>
+		
+		
+		<div class="row">
+			<div class="col s12 m12 l12" style="margin-top: 3%; text-align:center">
+				<h3>CHAT ADDRESS</h3>
+			</div>
+			<div class="col s12 m12 l12" style="margin-top: 3%">
+				<input type="text" id="ip" class="bk txt-bx" placeholder="IP ADDRESS">
+				<input type="text" id="port" class="bk txt-bx" placeholder="PORT">
+				<br>
+				<br>
+				<br>
+				<input type="button" class="bk txt-btn" value="CONNECT" onclick="setUpIP.connect()">
+			</div>
+		</div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+		<script src="js/functions.js"></script>
+        <script type="text/javascript" src="js/setup-ip.js"></script>
+    </body>
+</html>

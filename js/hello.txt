@@ -1,0 +1,45 @@
+var element = document.getElementById('logs');
+var ws;
+var app = {
+    initialize: function() {
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+    },
+    onDeviceReady: function() {
+		
+    },
+	createServer: function(){
+		var wsserver = cordova.plugins.wsserver;
+		
+         wsserver.start(0, {
+			'onFailure' :  function(addr, port, reason) {
+				element.innerHTML+='Stopped listening on '+addr+':'+port+'. Reason: '+reason + "<br>";
+			},
+			'onOpen' : function(conn) {
+				element.innerHTML+='A user connected from' + conn.remoteAddr+ "<br>";
+			},
+			'onMessage' : function(conn, msg) {
+				element.innerHTML+=conn + " " + msg+ "<br>";
+			},
+			'onClose' : function(conn, code, reason, wasClean) {
+				element.innerHTML+='A user disconnected from ' + conn.remoteAddr+ "<br>";
+			}
+		}, function onStart(addr, port) {
+			element.innerHTML+='Listening on '+addr+': '+port+ "<br>";
+		}, function onDidNotStart(reason) {
+			element.innerHTML+='Did not start. Reason: '+reason+ "<br>";
+		});
+	},
+	send: function(){
+		var message = document.getElementById('message').value;
+		ws.send(message);
+	},
+	connect: function(){
+		var addr = "192.168.8.106:59670";
+		ws = new WebSocket('ws://'+addr);
+		ws.onopen = function (event) { 
+			element.innerHTML += "Connected <br>"; 
+		}
+	}
+};
+
+app.initialize();
